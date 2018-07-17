@@ -3,6 +3,7 @@ using System;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace BasicSendReceiveQuickStart
 {
@@ -110,7 +111,8 @@ namespace BasicSendReceiveQuickStart
                 for (var i = 0; i < numberOfMessagesToSend; i++)
                 {
                     // Create a new message to send to the queue
-                    string messageBody = $"Message {i}";
+                    var culture = new CultureInfo("en-GB");
+                    string messageBody = $"{DateTime.Now.ToString(culture)}: Trigger Logic App";
                     var message = new Message(Encoding.UTF8.GetBytes(messageBody));
 
                     // Write the body of the message to the console
